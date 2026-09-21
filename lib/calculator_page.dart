@@ -4,14 +4,13 @@ import 'component/custom_button.dart';
 import 'component/custom_textfield.dart';
 
 class CalculatorPage extends StatefulWidget {
-  const CalculatorPage({super.key}); // Fixed constructor name to match class name
+  const CalculatorPage({super.key});
 
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  // Added controllers to pass required txtController parameter
   TextEditingController txtA1 = TextEditingController();
   TextEditingController txtA2 = TextEditingController();
 
@@ -30,7 +29,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
               txtController: txtA1,
             ),
           ),
-
           Container(
             margin: EdgeInsets.all(16.0),
             child: CustomTextfield(
@@ -38,7 +36,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
               txtController: txtA2,
             ),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -51,7 +48,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   text: '+',
                 ),
               ),
-              
               Container(
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
@@ -61,17 +57,15 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   text: '-',
                 ),
               ),
-            
               Container(
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
                     print('Calculate button pressed');
                   },
-                  text: 'x' ,
+                  text: 'x',
                 ),
               ),
-            
               Container(
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
@@ -79,12 +73,18 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     print('Calculate button pressed');
                   },
                   text: '/',
-                  ),
                 ),
+              ),
             ],
           ),
-
-          Text("Result: ", style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 24, fontWeight: FontWeight.bold)),
+          Text(
+            "Result: ",
+            style: TextStyle(
+              color: const Color.fromARGB(255, 0, 0, 0),
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
