@@ -1,0 +1,61 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+
+# Android
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/app/src/main/app/
+android/key.properties
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+
+# iOS / macOS (Xcode)
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flt
+ios/Flutter/ephemeral/
+ios/ServiceDefinitions.json
+ios/Runner.xcodeproj/
+ios/Runner.xcworkspace/
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+
+# CocoaPods
+Pods/
+Podfile.lock
+.symlinks/
+
+# IDE & Text Editors
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment variables
+.env
