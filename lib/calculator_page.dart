@@ -49,7 +49,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    controller.tambah(double.parse(txtA1.text), double.parse(txtA2.text));
+                    controller.tambah(
+                    double.tryParse(txtA1.text),
+                    double.tryParse(txtA2.text),
+                   );
                   },
                   text: '+',
                 ),
@@ -58,7 +61,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    controller.kurang(double.parse(txtA1.text), double.parse(txtA2.text));
+                    controller.kurang(
+                      double.tryParse(txtA1.text),
+                      double.tryParse(txtA2.text),
+                    );
                   },
                   text: '-',
                 ),
@@ -67,7 +73,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                   controller.kali(double.parse(txtA1.text), double.parse(txtA2.text));
+                   controller.kali(double.tryParse(txtA1.text), double.tryParse(txtA2.text));
                   },
                   text: 'x',
                 ),
@@ -76,7 +82,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    controller.bagi(double.parse(txtA1.text), double.parse(txtA2.text));
+                    controller.bagi(double.tryParse(txtA1.text), double.tryParse(txtA2.text));
                   },
                   text: '/',
                 ),
