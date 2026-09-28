@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
+import 'package:test_app/controllers/calculator_controler.dart';
 
 import 'component/custom_button.dart';
 import 'component/custom_textfield.dart';
@@ -9,6 +12,9 @@ class CalculatorPage extends StatefulWidget {
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
 }
+
+ final controller = Get.put(CalculatorController());
+   // menyambungkan page dan controller
 
 class _CalculatorPageState extends State<CalculatorPage> {
   TextEditingController txtA1 = TextEditingController();
@@ -24,7 +30,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
         children: [
           Container(
             margin: EdgeInsets.all(16.0),
-            child: CustomTextfield(
+            child:CustomTextfield (
               myHint: 'A1',
               txtController: txtA1,
             ),
@@ -43,7 +49,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    print('Calculate button pressed');
+                    controller.tambah(double.parse(txtA1.text), double.parse(txtA2.text));
                   },
                   text: '+',
                 ),
@@ -52,7 +58,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    print('Calculate button pressed');
+                    controller.kurang(double.parse(txtA1.text), double.parse(txtA2.text));
                   },
                   text: '-',
                 ),
@@ -61,7 +67,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    print('Calculate button pressed');
+                   controller.kali(double.parse(txtA1.text), double.parse(txtA2.text));
                   },
                   text: 'x',
                 ),
@@ -70,19 +76,17 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 margin: EdgeInsets.all(8.0),
                 child: CustomButton(
                   onPressed: () {
-                    print('Calculate button pressed');
+                    controller.bagi(double.parse(txtA1.text), double.parse(txtA2.text));
                   },
                   text: '/',
                 ),
               ),
             ],
           ),
-          Text(
-            "Result: ",
-            style: TextStyle(
-              color: const Color.fromARGB(255, 0, 0, 0),
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+          Obx(
+            () => Text(
+              'Hasil: ${controller.hasilHitung.value}',
+              style: TextStyle(fontSize: 24),
             ),
           ),
         ],
