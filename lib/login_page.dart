@@ -36,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             child: CustomTextfield(
               myHint: 'Enter your username',
               txtController: txtUsername,
+              radius: 10,
             ),
           ),
           Container(
@@ -43,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             child: CustomTextfield(
               myHint: 'Enter your password',
               txtController: txtPassword,
+              radius: 10,
             ),
           ),
           SizedBox(height: 20),

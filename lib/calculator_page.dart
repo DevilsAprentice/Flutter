@@ -32,14 +32,14 @@ class _CalculatorPageState extends State<CalculatorPage> {
             margin: EdgeInsets.all(16.0),
             child:CustomTextfield (
               myHint: 'A1',
-              txtController: txtA1,
+              txtController: txtA1,radius: 10,
             ),
           ),
           Container(
             margin: EdgeInsets.all(16.0),
             child: CustomTextfield(
               myHint: 'A2',
-              txtController: txtA2,
+              txtController: txtA2,radius: 10,
             ),
           ),
           Row(

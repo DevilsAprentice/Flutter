@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // 1. Wajib di-import untuk FilteringTextInputFormatter
+
 
 class CustomTextfield extends StatelessWidget {
 
   final String myHint;
   final TextEditingController txtController;
+  final double radius;
 
   const CustomTextfield({
     super.key,
     required this.myHint,
     required this.txtController,
-  });
+    required this.radius,
+  }); 
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class CustomTextfield extends StatelessWidget {
       controller: txtController,
       keyboardType: TextInputType.number, 
       inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly, 
+
       ],
       decoration: InputDecoration(
         hintText: myHint, 
