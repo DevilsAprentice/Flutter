@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_app/Routes.dart';
-import 'calculator_page.dart';
+import 'routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return GetMaterialApp(
+    return GetMaterialApp(
       title: "Belajar Flutter PPLG 3",
-      initialRoute: Routes.registration,
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.listMakanan,
       getPages: Routes.myPages,
     );
   }
 }
-

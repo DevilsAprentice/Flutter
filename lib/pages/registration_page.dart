@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_app/component/custom_button.dart';
 import '../Routes.dart';
 import '../component/custom_textfield.dart';
 
@@ -18,9 +20,12 @@ class RegistrationPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Registration"),
+        
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16),
+
         child: Column(
           children: [
             CustomTextfield(
@@ -29,11 +34,15 @@ class RegistrationPage extends StatelessWidget {
               radius: 10,
             ),
 
+            const SizedBox(height: 10),
+
             CustomTextfield(
               myHint: "Input email",
               txtController: txtEmail,
               radius: 10,
             ),
+
+            const SizedBox(height: 10),
 
             CustomTextfield(
               myHint: "Input no. WhatsApp",
@@ -41,11 +50,15 @@ class RegistrationPage extends StatelessWidget {
               radius: 10,
             ),
 
+            const SizedBox(height: 10),
+
             CustomTextfield(
               myHint: "Input alamat",
               txtController: txtAlamat,
               radius: 10,
             ),
+
+            const SizedBox(height: 10),
 
             DropdownButtonFormField<String>(
               value: jenisKelamin,
@@ -69,7 +82,7 @@ class RegistrationPage extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            ElevatedButton(
+            CustomButton(
               onPressed: () {
                 Get.toNamed(
                   Routes.confirmRegistration,
@@ -82,7 +95,7 @@ class RegistrationPage extends StatelessWidget {
                   },
                 );
               },
-              child: const Text("Send"),
+              text: 'Send',
             ),
           ],
         ),
@@ -90,3 +103,4 @@ class RegistrationPage extends StatelessWidget {
     );
   }
 }
+
