@@ -2,6 +2,7 @@
 import 'package:get/get.dart';
 import 'package:test_app/pages/confrim_registration.dart';
 import 'package:test_app/pages/detail_list_makanan.dart';
+import 'package:test_app/pages/main_menu.dart';
 import 'package:test_app/pages/registration_page.dart';
 import 'package:test_app/pages/list_makanan_page.dart';
 
@@ -10,6 +11,7 @@ class Routes {
   static const String confirmRegistration = "/confirmRegistration";
   static const String listMakanan = "/listMakanan";
   static const String detailMakanan = "/detailMakanan";
+  static const String mainMenu = "/mainMenu";
 
   static final myPages = [
     GetPage(
@@ -28,5 +30,11 @@ class Routes {
       name: detailMakanan,
       page: () => DetailMakananPage(),
     ),
+    GetPage
+     (
+      name: mainMenu,
+      page: () => MainMenuPage(),
+    ),
+
   ];
 }
