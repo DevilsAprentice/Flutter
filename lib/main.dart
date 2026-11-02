@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: "Belajar Flutter PPLG 3",
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.mainMenu,
+      initialRoute: Routes.login,
       getPages: Routes.myPages,
     );
   }

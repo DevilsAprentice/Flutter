@@ -1,12 +1,14 @@
-
 import 'package:get/get.dart';
+import 'package:test_app/login_page.dart';
 import 'package:test_app/pages/confrim_registration.dart';
 import 'package:test_app/pages/detail_list_makanan.dart';
 import 'package:test_app/pages/main_menu.dart';
 import 'package:test_app/pages/registration_page.dart';
 import 'package:test_app/pages/list_makanan_page.dart';
 
+
 class Routes {
+  static const String login = "/login";
   static const String registration = "/registration";
   static const String confirmRegistration = "/confirmRegistration";
   static const String listMakanan = "/listMakanan";
@@ -14,6 +16,10 @@ class Routes {
   static const String mainMenu = "/mainMenu";
 
   static final myPages = [
+    GetPage(
+      name: login,
+      page: () => LoginPage(),
+    ),
     GetPage(
       name: registration,
       page: () => RegistrationPage(),
@@ -26,15 +32,13 @@ class Routes {
       name: listMakanan,
       page: () => ListMakananPage(),
     ),
-     GetPage(
+    GetPage(
       name: detailMakanan,
       page: () => DetailMakananPage(),
     ),
-    GetPage
-     (
+    GetPage(
       name: mainMenu,
       page: () => MainMenuPage(),
     ),
-
   ];
 }

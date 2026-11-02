@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:test_app/controllers/login_page_controler.dart';
+
 
 import 'component/custom_button.dart';
 import 'component/custom_textfield.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  TextEditingController txtUsername = TextEditingController();
-  TextEditingController txtPassword = TextEditingController();
-  String statusLogin = "";
+ 
+  final LoginPageController controller = Get.put(LoginPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           Text(
-            "Welcome to Application " + statusLogin,
+            "Welcome to Application",
             style: TextStyle(
               color: const Color.fromARGB(255, 0, 0, 0),
               fontSize: 24,
@@ -35,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
             margin: EdgeInsets.all(16.0),
             child: CustomTextfield(
               myHint: 'Enter your username',
-              txtController: txtUsername,
+              txtController: controller.txtUsername, 
               radius: 10,
             ),
           ),
@@ -43,33 +40,23 @@ class _LoginPageState extends State<LoginPage> {
             margin: EdgeInsets.all(16.0),
             child: CustomTextfield(
               myHint: 'Enter your password',
-              txtController: txtPassword,
+              txtController: controller.txtPassword, 
               radius: 10,
             ),
           ),
           SizedBox(height: 20),
-          CustomButton(
-            text: 'Login',
-            onPressed: () {
-              setState(() {
-                String username = txtUsername.text.toString();
-                String password = txtPassword.text.toString();
-                if (username == "admin" && password == "admin") {
-                  setState(() {
-                    statusLogin = "Login Success";
-                    print('Login Success');
-                  });
-                } else {
-                  setState(() {
-                    statusLogin = "Login Failed";
-                    print('Login Failed');
-                  });
-                }
-              });
-
-              print('Login button pressed');
-            },
-          ),
+      
+          Obx(() {
+            if (controller.isLoading.value) {
+              return Center(child: CircularProgressIndicator());
+            }
+            return CustomButton(
+              text: 'Login',
+              onPressed: () {
+                controller.login(); 
+              },
+            );
+          }),
         ],
       ),
     );
