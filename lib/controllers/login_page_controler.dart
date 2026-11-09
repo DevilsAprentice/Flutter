@@ -3,14 +3,45 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:test_app/routes.dart';
+
+
+LoginModel loginModelFromJson(String str) => LoginModel.fromJson(json.decode(str));
+String loginModelToJson(LoginModel data) => json.encode(data.toJson());
+
+class LoginModel {
+  final bool status;
+  final String message;
+  final String token;
+
+  LoginModel({
+    required this.status,
+    required this.message,
+    required this.token,
+  });
+
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
+        status: json["status"] ?? false,
+        message: json["message"] ?? '',
+        token: json["token"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "message": message,
+        "token": token,
+      };
+}
 
 class LoginPageController extends GetxController {
   TextEditingController txtUsername = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
 
   var isLoading = false.obs;
+  
 
-  // method hit API 
+  var loginModel = Rxn<LoginModel>();
+
   void login() async {
     if (txtUsername.text.toString().isEmpty || txtPassword.text.toString().isEmpty) {
       Get.snackbar("Error", "Username dan Password tidak boleh kosong");
@@ -26,13 +57,20 @@ class LoginPageController extends GetxController {
         });
 
         isLoading.value = false;
+        
         if (response.statusCode == 200) {
-         
-          final data = jsonDecode(response.body);
-          if (data['status'] == true) {
-            Get.snackbar("berhasil", data['message']);
+          
+          loginModel.value = loginModelFromJson(response.body);
+
+          if (loginModel.value?.status == true) {
+            Get.snackbar("berhasil", loginModel.value!.message);
+            
+            print("Token: ${loginModel.value?.token}");
+
+            Get.offNamed(Routes.mainMenu);
+          
           } else {
-            Get.snackbar("gagal", data['message']);
+            Get.snackbar("gagal", loginModel.value?.message ?? "Terjadi kesalahan");
           }
         } else {
           Get.snackbar("gagal", "cek internet connection");
